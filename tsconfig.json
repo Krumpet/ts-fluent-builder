@@ -1,6 +1,17 @@
 {
+  // ADD THIS!
+  "ts-node": {
+    // This can be omitted when using ts-patch
+    "compiler": "ttypescript"
+  },
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
+
+    "plugins": [
+      {
+        "transform": "tst-reflect-transformer"
+      }
+  ],
 
     /* Projects */
     // "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */

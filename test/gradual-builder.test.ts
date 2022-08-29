@@ -7,9 +7,7 @@ test('create a builder and object from it', () => {
         isBest: boolean;
     }
     
-    const originalExampleValue: ExampleType = { typeName: 'hello', id: 1, isBest: true };
-    
-    const exampleBuilder: Builder<ExampleType> = createBuilder(originalExampleValue);
+    const exampleBuilder: Builder<ExampleType> = createBuilder<ExampleType>();
     
     const builderAfterNameSet = exampleBuilder.setTypeName("goodbye");
     
