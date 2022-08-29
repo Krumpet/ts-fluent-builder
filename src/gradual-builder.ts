@@ -4,29 +4,11 @@ type BuilderAux<T, AlreadyBuilt> = Exclude<keyof T, AlreadyBuilt> extends never 
 
 type shouldBeNever = Exclude<keyof { 'omg': string, 'hello': string }, 'hello' | 'omg'>;
 
-type Builder<T> = BuilderAux<T, never>;
-
-interface ExampleType {
-    typeName: string;
-    id: number;
-    isBest: boolean;
-}
-
-const originalExampleValue: ExampleType = { typeName: 'hello', id: 1, isBest: true };
-
-const exampleBuilder: Builder<ExampleType> = createBuilder(originalExampleValue);
-
-const builderAfterNameSet = exampleBuilder.setTypeName("goodbye");
-
-const finishedSetting = builderAfterNameSet.setId(2).setIsBest(true);
-
-const isExampleType: ExampleType = finishedSetting.build();
-
-console.log(isExampleType);
+export type Builder<T> = BuilderAux<T, never>;
 
 // TODO: initialize with the values from the argument?
 // TODO: what about optional props that might not be set on the original object?
-function createBuilder<T>(obj: T): Builder<T> {
+export function createBuilder<T>(obj: T): Builder<T> {
     const result: Record<string, unknown> = {};
     const builder: Record<string, Function> = {};
     Object.getOwnPropertyNames(obj).forEach(prop => {
