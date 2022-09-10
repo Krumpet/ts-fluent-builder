@@ -23,11 +23,11 @@ We can leverage typescript's type system to produce a builder type that:
 ```typescript
 const exampleBuilder: Builder<ExampleType> = createBuilder<ExampleType>();
 exampleBuilder.build();
-              ~~~~~~~~
+               ~~~~~~~
 // Property 'build' does not exist on type 'Builder<ExampleType>'.
 
 exampleBuilder.setId(2).setId(1);
-                       ~~~~~~~~~
+                        ~~~~~~~~
 // Property 'setId' does not exist on type 'BuilderAux<ExampleType, "id">'
 ```
 
